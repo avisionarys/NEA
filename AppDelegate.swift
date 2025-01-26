@@ -1,15 +1,17 @@
 //
 //  AppDelegate.swift
-//  NEA_computer_science
+//  NEA
 //
-//  Created by CHETAN VISROLIA on 19/11/2024.
+//  Created by CHETAN VISROLIA on 24/01/2025.
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
 import FirebaseCore
 import CoreData
+import FirebaseFirestore
+import FirebaseAuth
+import Firebase
+import FirebaseDatabase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let db = Firestore.firestore()
-        print(db)
-        
         FirebaseApp.configure()
-        
- 
+
+        let database = Database.database().reference()
+        let db  = Firestore.firestore()
         
         return true
     }
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "NEA_computer_science")
+        let container = NSPersistentContainer(name: "NEA")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
